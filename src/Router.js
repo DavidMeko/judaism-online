@@ -1,7 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Lessons from './pages/Lessons';
 import Quizzes from './pages/Quizzes';
@@ -10,12 +12,14 @@ import About from './pages/About';
 import Help from './pages/Help';
 import AccountSettings from './pages/AccountSettings';
 
-function App() {
+function Router() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route element={<Layout />}>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/lessons" element={<Lessons />} />
           <Route path="/quizzes" element={<Quizzes />} />
@@ -23,10 +27,10 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/help" element={<Help />} />
           <Route path="/account-settings" element={<AccountSettings />} />
-        </Route>
-      </Routes>
-    </Router>
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
-export default App;
+export default Router;
